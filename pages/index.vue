@@ -122,7 +122,7 @@ export default {
         { label: 'Mentions', icon: 'at' },
         { label: 'Documents', icon: 'file-document-outline' }
       ],
-      ref: this.$route.query.ref
+      ref: this.$route.query.ref || this.$cookies.get('forwarder-genius-ref')
     }
   },
 
@@ -137,9 +137,15 @@ export default {
   },
 
   mounted () {
+    // Save cookie with referral id
+    const ref = this.$route.query.ref
+    if (ref) {
+      this.$cookies.set('forwarder-genius-ref', ref)
+    }
+
+    // Handle confetti
     if (process.browser) {
       const canvas = document.getElementById('confetti')
-      // const context = canvas.getContext('2d')
       canvas.width = window.innerWidth
       canvas.height = 400
 
@@ -148,13 +154,11 @@ export default {
 
       function resizeCanvas () {
         canvas.width = window.innerWidth
-        // canvas.height = window.innerHeight
 
         /**
          * Your drawings need to be inside this function otherwise they will be reset when
          * you resize the browser window and the canvas goes will be cleared.
          */
-        // drawStuff();
       }
 
       this.$confetti.start({
