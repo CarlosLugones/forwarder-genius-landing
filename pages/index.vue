@@ -13,7 +13,7 @@
             Forward messages in Telegram automatically
           </h2>
           <div class="has-text-centered">
-            <a href="https://t.me/ForwarderGeniusBot" target="_blank">
+            <a :href="link" target="_blank">
               <b-button type="is-white" size="is-large" icon-left="telegram" rounded>
                 Start the bot
               </b-button>
@@ -72,7 +72,7 @@
           <p class="margin-bottom-20">
             free messages to forward
           </p>
-          <a href="https://t.me/ForwarderGeniusBot" target="_blank">
+          <a :href="link" target="_blank">
             <b-button type="is-white" size="is-large" icon-left="telegram" rounded>
               Start the bot
             </b-button>
@@ -103,7 +103,9 @@
 import ForwarderFilter from '~/components/ForwarderFilter'
 export default {
   name: 'HomePage',
+
   components: { ForwarderFilter },
+
   data () {
     return {
       filters: [
@@ -119,9 +121,21 @@ export default {
         { label: 'Hashtags', icon: 'pound' },
         { label: 'Mentions', icon: 'at' },
         { label: 'Documents', icon: 'file-document-outline' }
-      ]
+      ],
+      ref: this.$route.query.ref
     }
   },
+
+  computed: {
+    link () {
+      let l = 'https://t.me/ForwarderGeniusBot'
+      if (this.ref) {
+        l += `?start=ref_${this.ref}`
+      }
+      return l
+    }
+  },
+
   mounted () {
     if (process.browser) {
       const canvas = document.getElementById('confetti')
