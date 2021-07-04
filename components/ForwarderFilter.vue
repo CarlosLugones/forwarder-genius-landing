@@ -1,5 +1,5 @@
 <template>
-  <div class="has-text-centered">
+  <div class="filter has-text-centered">
     <b-icon :icon="icon"></b-icon>
     <p>{{ label }}</p>
   </div>
@@ -19,3 +19,12 @@ export default {
   }
 }
 </script>
+
+<style>
+.filter {
+  color: white;
+  background: #A83BFE !important;
+  border-radius: 20pt;
+  margin: 10pt;
+}
+</style>
