@@ -76,7 +76,7 @@ export default {
       }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicons/favicon.ico' },
     ]
   },
 
@@ -101,8 +101,74 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/buefy
-    'nuxt-buefy'
+    'nuxt-buefy',
+    'nuxt-rfg-icon'
   ],
+
+  'rfg-icon': {
+    static: true,
+    staticPath: 'favicons',
+    masterPicture: 'static/img/favicon.png',
+    rfg: {
+      masterPicture: 'static/img/favicon.png',
+      iconsPath: '/',
+      design: {
+        ios: {
+          pictureAspect: 'noChange',
+          assets: {
+            ios6AndPriorIcons: false,
+            ios7AndLaterIcons: false,
+            precomposedIcons: false,
+            declareOnlyDefaultIcon: true
+          }
+        },
+        desktopBrowser: {},
+        windows: {
+          pictureAspect: 'noChange',
+          backgroundColor: '#2D1C3C',
+          onConflict: 'override',
+          assets: {
+            windows80Ie10Tile: false,
+            windows10Ie11EdgeTiles: {
+              small: false,
+              medium: true,
+              big: false,
+              rectangle: false
+            }
+          }
+        },
+        androidChrome: {
+          pictureAspect: 'shadow',
+          themeColor: '#2D1C3C',
+          manifest: {
+            name: 'Forwarder Genius',
+            startUrl: 'https://forwarder.lugodev.com',
+            display: 'standalone',
+            orientation: 'notSet',
+            onConflict: 'override',
+            declared: true
+          },
+          assets: {
+            legacyIcon: true,
+            lowResolutionIcons: false
+          }
+        },
+        safariPinnedTab: {
+          pictureAspect: 'blackAndWhite',
+          threshold: 66.40625,
+          themeColor: '#2D1C3C'
+        }
+      },
+      settings: {
+        compression: 3,
+        scalingAlgorithm: 'Mitchell',
+        errorOnImageTooSmall: false,
+        readmeFile: true,
+        htmlCodeFile: true,
+        usePathAsIs: false
+      }
+    }
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
