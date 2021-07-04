@@ -102,7 +102,8 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/buefy
     'nuxt-buefy',
-    'nuxt-rfg-icon'
+    'nuxt-rfg-icon',
+    'cookie-universal-nuxt'
   ],
 
   'rfg-icon': {
