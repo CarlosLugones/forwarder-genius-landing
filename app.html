@@ -14,5 +14,25 @@
   </head>
   <body {{ BODY_ATTRS }}>
     {{ APP }}
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "description": "Forward messages in Telegram automatically",
+        "name": "Forwarder Genius",
+        "image": "https://forwarder.lugodev.com/img/brand.svg",
+        "url": "https://forwarder.lugodev.com",
+        "sameAs" : [
+            "https://t.me/ForwarderGeniusBot"
+        ],
+        "contactPoint" : [
+            {
+                "@type" : "ContactPoint",
+                "contactType" : "customer service",
+                "url": "https://t.me/LugodevSupportBot"
+            }
+        ]
+      }
+    </script>
   </body>
 </html>
