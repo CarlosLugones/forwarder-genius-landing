@@ -1,3 +1,7 @@
+const title = 'Forwarder Genius'
+const description = 'Forward messages in Telegram automatically'
+const image = 'https://forwarder.lugodev.com/img/cover.jpg'
+
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
@@ -11,8 +15,65 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
-      { name: 'format-detection', content: 'telephone=no' }
+      { name: 'og:locale', content: 'en_US' },
+      {
+        hid: 'description',
+        name: 'description',
+        content: description
+      },
+      { hid: 'og:type', name: 'og:type', content: 'website' },
+      {
+        hid: 'og:site_name',
+        name: 'og:site_name',
+        content: title
+      },
+      {
+        hid: 'og:title',
+        name: 'og:title',
+        content: title
+      },
+      {
+        hid: 'og:description',
+        name: 'og:description',
+        content: description
+      },
+      {
+        hid: 'og:image',
+        name: 'og:image',
+        property: 'og:image',
+        content: image
+      },
+      {
+        hid: 'twitter:card',
+        name: 'twitter:card',
+        content: 'summary_large_image'
+      },
+      {
+        hid: 'twitter:image:alt',
+        name: 'twitter:image:alt',
+        content: title
+      },
+      { hid: 'twitter:site', name: 'twitter:site', content: '@lugodev' },
+      {
+        hid: 'twitter:title',
+        name: 'twitter:title',
+        content: title
+      },
+      {
+        hid: 'twitter:description',
+        name: 'twitter:description',
+        content: description
+      },
+      {
+        hid: 'twitter:image',
+        name: 'twitter:image',
+        content: image
+      },
+      {
+        hid: 'twitter:creator',
+        name: 'twitter:creator',
+        content: '@lugodev'
+      }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
