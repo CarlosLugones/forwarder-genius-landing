@@ -41,6 +41,7 @@
       </p>
     </section>
 
+    <!-- filters -->
     <section class="section">
       <p class="title has-text-centered margin-bottom-20">
         Granular filters
@@ -58,10 +59,41 @@
         <small>More filters coming up soon!</small>
       </p>
     </section>
+    <!-- end filters -->
+
+    <!-- botsarchive api info -->
+    <p class="title has-text-centered">
+      Achievements
+    </p>
+    <div v-if="archive" class="columns is-centered margin-bottom-20">
+      <div class="column is-narrow is-12-mobile" style="padding: 20pt">
+        <div class="media margin-bottom-20">
+          <div class="media-left">
+            <img src="/img/botsarchive.jpg" alt="BotsArchive" width="100pt" style="border-radius: 10pt" />
+          </div>
+          <div class="media-content">
+            <p class="subtitle" style="margin-bottom: 5pt">
+              🥈 2nd best bot of the week
+            </p>
+            <b-rate
+              v-model="archive.vote"
+              :custom-text="`${archive.votes} votes`"
+              disabled
+              spaced
+            ></b-rate>
+            <p>In <a href="https://t.me/BotsArchive/1876" target="_blank">@BotsArchive</a></p>
+          </div>
+        </div>
+        <p class="has-text-centered">
+          <small><i>BotsArchive is the most powerful archive in the telegram bots history with 93k+ members</i></small>
+        </p>
+      </div>
+    </div>
+    <!-- end botsarchive api info -->
 
     <div class="hero is-black is-bold" style="height: 400px;">
       <div class="hero-content">
-        <canvas id="confetti" style="position: absolute;"></canvas>
+        <canvas id="confetti" style="position: absolute;" />
         <section class="section has-text-centered">
           <p class="cta">
             Start with
@@ -91,7 +123,7 @@
       </li>
       <p>
         <span>Created with</span>
-        <b-icon icon="heart" type="is-danger" size="is-small"></b-icon>
+        <b-icon icon="heart" type="is-danger" size="is-small" />
         <span>by <a href="https://lugodev.com" target="_blank">@lugodev</a></span>
       </p>
     </ul>
@@ -122,7 +154,8 @@ export default {
         { label: 'Mentions', icon: 'at' },
         { label: 'Documents', icon: 'file-document-outline' }
       ],
-      ref: this.$route.query.ref || this.$cookies.get('forwarder-genius-ref')
+      ref: this.$route.query.ref || this.$cookies.get('forwarder-genius-ref'),
+      archive: null
     }
   },
 
@@ -142,6 +175,13 @@ export default {
     if (ref) {
       this.$cookies.set('forwarder-genius-ref', ref)
     }
+
+    // Handle BotsArchive API
+    fetch('https://api.botsarchive.com/getBotID.php?username=@GroupToChannelBot')
+      .then(response => response.json())
+      .then((data) => {
+        this.archive = data.result
+      })
 
     // Handle confetti
     if (process.browser) {
