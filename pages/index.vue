@@ -4,7 +4,7 @@
       <div class="hero-content">
         <section class="section">
           <div class="has-text-centered">
-            <img src="/img/brand.svg" alt="Forwarder Genius" width="250pt">
+            <img src="/img/brand.png" alt="Forwarder Genius" width="250pt">
           </div>
           <h1 class="title has-text-centered  has-text-white margin-bottom-20">
             Forwarder Genius
@@ -85,7 +85,7 @@
           </div>
         </div>
         <p class="has-text-centered">
-          <small><i>BotsArchive is the most powerful archive in the telegram bots history with 93k+ members</i></small>
+          <small><i>BotsArchive is the most powerful archive in the Telegram bots history with 93k+ members</i></small>
         </p>
       </div>
     </div>
