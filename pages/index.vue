@@ -154,7 +154,7 @@ export default {
         { label: 'Mentions', icon: 'at' },
         { label: 'Documents', icon: 'file-document-outline' }
       ],
-      ref: this.$route.query.ref || this.$cookies.get('forwarder-genius-ref'),
+      ref: null,
       archive: null
     }
   },
@@ -174,6 +174,13 @@ export default {
     const ref = this.$route.query.ref
     if (ref) {
       this.$cookies.set('forwarder-genius-ref', ref)
+      this.ref = ref
+    }
+
+    // Check cookie
+    const cookie = this.$cookies.get('forwarder-genius-ref', ref)
+    if (cookie) {
+      this.ref = cookie
     }
 
     // Handle BotsArchive API
